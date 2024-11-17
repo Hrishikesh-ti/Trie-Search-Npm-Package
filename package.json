@@ -1,0 +1,31 @@
+{
+  "name": "search-optimized-filter",
+  "version": "1.0.4",
+  "type": "commonjs",
+  "description": "Efficiently search through arrays using a Trie-based implementation for fast and optimized lookups.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "Search",
+    "Optimize",
+    "Trie",
+    "Filters",
+    "Search-Engine",
+    "Fast-Search",
+    "React",
+    "Nextjs",
+    "High-Performance",
+    "Trie-Based",
+    "Frontend",
+    "Auto-Complete",
+    "Auto-Filter",
+    "Recommendation"
+  ],
+  "author": "Naman Pandey | Hrishikesh Tiwari",
+  "license": "ISC",
+  "dependencies": {
+    "search-optimized-filter": "^1.0.3"
+  }
+}
