@@ -4,6 +4,7 @@
 
 ---
 
+  
 ## 🚀 **Features**
 - 🔍 **Fast Search:** Efficiently search through large datasets using Trie.  
 - 📂 **Flexible Input:** Supports arrays of strings or arrays of objects (with a specified key).  
@@ -14,18 +15,20 @@
 
 
 
+  
 ## 📥 **Installation**
 Install the package using npm:  
-```bash
+```javascript
 npm install search-optimized-filter
 ```
 
 
 
+  
 ## 📘 **Usage**
 
 ### 1. Searching an Array of Strings
-```bash
+```javascript
    import TrieSearch from "search-optimized-filter";
    const words = ["hello", "world", "hii", "trie", "search", "how are you"];
    const trie = new TrieSearch(words);
@@ -34,7 +37,7 @@ npm install search-optimized-filter
 ```
 ### 2. Searching an Array of Objects If the input is an array of objects </br>
    specify the key to search for:
-```bash
+```javascript
    import TrieSearch from "search-optimized-filter";
   
    const data = [
@@ -54,11 +57,17 @@ npm install search-optimized-filter
 ```
 
 
+##  
+
+> [!IMPORTANT]
+> Initialize the TrieSearch object in the parent component to avoid regenerating the trie on every render, as building the trie is the most time-consuming operation and is unnecessary if the data doesn't change.
+
+  
 
 ## ⚙️ **API Reference**
 
 **Constructor**
-```bash
+```javascript
 new TrieSearch(array, [key])
 ```
 - `array`: The dataset to be used. Can be an array of strings or an array of objects.
@@ -74,13 +83,77 @@ Returns an array of words or object values that match the given prefix.
 
 
 
+## 💡 **Optimization Tip**
+
+If you're using **TrieSearch** in a React or similar framework where state updates may trigger re-renders, consider initializing the `TrieSearch` object **once** in a parent or higher-level component.  
+
+This prevents unnecessary re-creation of the Trie structure on every render, especially when the `words` array remains unchanged. Since generating the Trie is the most time-intensive operation, this approach ensures optimal performance.
+
+### Example:
+Parent Component
+```javascript
+   import React, { useState } from "react";
+   import TrieSearch from "trie-search";
+   import Child from "./Child";
+   
+   const Parent = () => {
+     const words = ["apple", "banana", "grape", "orange", "mango"];
+     const trie = new TrieSearch(words); // Create TrieSearch object here
+     const [searchTerm, setSearchTerm] = useState("");
+   
+     return (
+       <div>
+         <h1>TrieSearch Example</h1>
+         <input
+           type="text"
+           value={searchTerm}
+           onChange={(e) => setSearchTerm(e.target.value)}
+           placeholder="Type to search..."
+         />
+         <Child trie={trie} searchTerm={searchTerm} />
+       </div>
+     );
+   };
+   
+   export default Parent;
+```
+
+Child Component
+```javascript
+import React from "react";
+
+const Child = ({ trie, searchTerm }) => {
+  const results = trie.suggest(searchTerm); // Use the suggest function
+
+  return (
+    <div>
+      <h2>Search Results:</h2>
+      <ul>
+        {results.map((result, index) => (
+          <li key={index}>{result}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Child;
+```
+
+
+  
 ## 🏎️ **Performance**
 
 **TrieSearch** is optimized for high performance, capable of searching 20,000 words in under 1 millisecond.  
 Here\'s a performance screenshot:
 
+<img width="500" alt="Screenshot 2024-11-16 at 8 31 25 PM" src="https://github.com/user-attachments/assets/73a0a125-7436-44c2-914b-acb4614f60d6">
 
 
+  
+<br>
+
+  
 ## 🌟 **Why Use TrieSearch?**
 
 - Perfect for autocomplete, predictive text, or any search functionality requiring lightning-fast results.
@@ -91,7 +164,7 @@ Here\'s a performance screenshot:
 
 ## 📄 **Example Code**
 
-```bash
+```javascript
 import TrieSearch from "search-optimized-filter";
 
 // Example 1: Array of Strings
@@ -111,18 +184,20 @@ console.log(trie2.suggest("al")); // Output: ["alice"]
 ```
 
 
-
+  
 ## 📦 **Package Details**
 - Language: JavaScript (Node.js)
 - Dependencies: None
 
 
 
+  
 ## 🛠️ **Contributing**
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit pull requests. 
 
 
+  
 
 ## 📃 **License**
 
