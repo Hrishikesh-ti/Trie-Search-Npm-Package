@@ -1,6 +1,6 @@
 {
   "name": "search-optimized-filter",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "type": "commonjs",
   "description": "Efficiently search through arrays using a Trie-based implementation for fast and optimized lookups.",
   "main": "index.js",
